@@ -15,16 +15,14 @@
       <div class="fade-line" style="font-size: 13px; line-height: 22px;">
         <span class="keyword">import</span>
         <span> {{ '{' }} Component {{ '}' }} </span>
-        <span class="keyword">from</span>
-        <span> </span>
+        <span class="keyword">from </span>
         <span class="str">'&#64;angular/core'</span><span>;</span>
       </div>
 
       <div class="fade-line" style="height: 24px;"></div>
 
       <div class="fade-line" style="font-size: 13px; line-height: 22px;">
-        <span class="keyword">const</span>
-        <span> </span>
+        <span class="keyword">const </span>
         <span class="prop">engineer</span>
         <span class="keyword">: </span>
         <span class="type">SeniorDeveloper</span>
@@ -36,7 +34,7 @@
       </div>
 
       <div class="fade-line" style="font-size: 13px; line-height: 26px; padding-left: 28px;">
-        <span class="prop">role</span><span>: </span><span>{{ typedText }}</span><span class="cursor" [class.blink]="typingDone">|</span><span>,</span>
+        <span class="prop">role</span><span>: </span><span>{{ typedText() }}</span><span class="cursor" [class.blink]="typingDone()">|</span><span>,</span>
       </div>
 
       <div class="fade-line" style="font-size: 13px; line-height: 26px; padding-left: 28px;">

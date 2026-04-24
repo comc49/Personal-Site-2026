@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, signal } from '@angular/core';
 import { trigger, transition, query, style, stagger, animate } from '@angular/animations';
 import { timer, interval, Subscription } from 'rxjs';
 import { switchMap, take, map } from 'rxjs/operators';
@@ -25,8 +25,8 @@ export class HeroComponent implements OnInit, OnDestroy {
     year: 'numeric', month: 'long', day: 'numeric'
   });
 
-  typedText = '';
-  typingDone = false;
+  typedText = signal('');
+  typingDone = signal(false);
 
   private readonly fullText = '"Senior Frontend Developer"';
   private sub?: Subscription;
@@ -43,8 +43,8 @@ export class HeroComponent implements OnInit, OnDestroy {
         map(i => this.fullText.slice(0, i))
       ))
     ).subscribe(val => {
-      this.typedText = val;
-      if (val.length === this.fullText.length) this.typingDone = true;
+      this.typedText.set(val);
+      if (val.length === this.fullText.length) this.typingDone.set(true);
     });
   }
 
