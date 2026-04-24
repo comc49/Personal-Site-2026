@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brian Koo — Website Concepts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;700;800&family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@300;400;500;700&display=swap" />
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #111; font-family: sans-serif; }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+/* ─── CONCEPT 1: Terminal / Code Editor ─────────────────────────── */
+function Concept1() {
+  const [typed, setTyped] = React.useState('');
+  const full = 'Senior Frontend Engineer';
+  React.useEffect(() => {
+    let i = 0;
+    const t = setInterval(() => {
+      setTyped(full.slice(0, ++i));
+      if (i >= full.length) clearInterval(t);
+    }, 60);
+    return () => clearInterval(t);
+  }, []);
+  return (
+    <div style={{ width: '100%', height: '100%', background: '#0d0d0d', fontFamily: "'IBM Plex Mono', monospace", position: 'relative', overflow: 'hidden' }}>
+      {/* Scanlines */}
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.015) 2px, rgba(255,255,255,0.015) 4px)', pointerEvents: 'none', zIndex: 10 }} />
+      {/* Tab bar */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 0, background: '#1a1a1a', borderBottom: '1px solid #222', height: 36, paddingLeft: 16 }}>
+        <div style={{ background: '#0d0d0d', borderTop: '2px solid #DD0031', color: '#fff', fontSize: 11, padding: '0 20px', height: '100%', display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ color: '#DD0031' }}>●</span> bkoo.dev — zsh
+        </div>
+        <div style={{ color: '#444', fontSize: 11, padding: '0 20px', height: '100%', display: 'flex', alignItems: 'center' }}>portfolio.ts</div>
+      </div>
+      {/* Main content */}
+      <div style={{ padding: '48px 64px', position: 'relative', zIndex: 2 }}>
+        <div style={{ color: '#555', fontSize: 12, marginBottom: 8 }}>// brian-koo/portfolio/src/app/hero.component.ts</div>
+        <div style={{ color: '#444', fontSize: 12, marginBottom: 40 }}>─────────────────────────────────────────────</div>
+
+        <div style={{ marginBottom: 6 }}>
+          <span style={{ color: '#DD0031' }}>const</span>
+          <span style={{ color: '#7c8cff' }}> engineer</span>
+          <span style={{ color: '#fff' }}> = </span>
+          <span style={{ color: '#e8e8e8' }}>&#123;</span>
+        </div>
+        <div style={{ paddingLeft: 32, marginBottom: 4 }}>
+          <span style={{ color: '#4ec9b0' }}>name</span>
+          <span style={{ color: '#fff' }}>: </span>
+          <span style={{ color: '#ce9178', fontSize: 28, fontWeight: 700, letterSpacing: '-0.5px' }}>"Brian Koo"</span><span style={{ color: '#fff' }}>,</span>
+        </div>
+        <div style={{ paddingLeft: 32, marginBottom: 4 }}>
+          <span style={{ color: '#4ec9b0' }}>role</span>
+          <span style={{ color: '#fff' }}>: </span>
+          <span style={{ color: '#ce9178', fontSize: 15 }}>"{typed}</span>
+          <span style={{ color: '#DD0031', animation: 'blink 1s step-end infinite' }}>|</span>
+          <span style={{ color: '#ce9178' }}>"</span><span style={{ color: '#fff' }}>,</span>
+        </div>
+        <div style={{ paddingLeft: 32, marginBottom: 4 }}>
+          <span style={{ color: '#4ec9b0' }}>framework</span>
+          <span style={{ color: '#fff' }}>: </span>
+          <span style={{ color: '#ce9178' }}>"Angular"</span><span style={{ color: '#fff' }}>,</span>
+        </div>
+        <div style={{ paddingLeft: 32, marginBottom: 4 }}>
+          <span style={{ color: '#4ec9b0' }}>experience</span>
+          <span style={{ color: '#fff' }}>: </span>
+          <span style={{ color: '#b5cea8' }}>9</span><span style={{ color: '#fff' }}>,</span>
+        </div>
+        <div style={{ paddingLeft: 32, marginBottom: 4 }}>
+          <span style={{ color: '#4ec9b0' }}>location</span>
+          <span style={{ color: '#fff' }}>: </span>
+          <span style={{ color: '#ce9178' }}>"Irvine, CA"</span><span style={{ color: '#fff' }}>,</span>
+        </div>
+        <div style={{ paddingLeft: 32, marginBottom: 4 }}>
+          <span style={{ color: '#4ec9b0' }}>available</span>
+          <span style={{ color: '#fff' }}>: </span>
+          <span style={{ color: '#569cd6' }}>true</span>
+        </div>
+        <div style={{ color: '#e8e8e8', marginBottom: 40 }}>&#125;</div>
+
+        <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+          <div style={{ background: '#DD0031', color: '#fff', padding: '10px 28px', fontSize: 13, cursor: 'pointer', letterSpacing: 1 }}>
+            {'>'} view_work()
+          </div>
+          <div style={{ color: '#555', fontSize: 13 }}>{'>'} contact()</div>
+        </div>
+      </div>
+      {/* Angular badge */}
+      <div style={{ position: 'absolute', right: 64, top: 80, opacity: 0.06 }}>
+        <svg width="200" height="200" viewBox="0 0 250 250" fill="none">
+          <polygon points="125,5 250,45 220,200 125,245 30,200 0,45" fill="#DD0031"/>
+          <polygon points="125,30 230,62 205,185 125,220 45,185 20,62" fill="#C3002F"/>
+          <polygon points="125,50 190,190 125,200 60,190" fill="#DD0031"/>
+          <polygon points="125,50 60,190 90,190 125,120" fill="#C3002F"/>
+        </svg>
+      </div>
+      <style>{`@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }`}</style>
+    </div>
+  );
+}
+
+/* ─── CONCEPT 2: Geometric Shield ───────────────────────────────── */
+function Concept2() {
+  return (
+    <div style={{ width: '100%', height: '100%', background: '#08090f', position: 'relative', overflow: 'hidden', fontFamily: "'Syne', sans-serif" }}>
+      {/* Large Angular shield BG */}
+      <svg style={{ position: 'absolute', right: -60, top: -40, opacity: 0.12 }} width="600" height="680" viewBox="0 0 250 280">
+        <polygon points="125,5 250,45 220,200 125,245 30,200 0,45" fill="#DD0031"/>
+        <polygon points="125,50 60,190 90,190 125,120" fill="#fff" opacity="0.5"/>
+        <polygon points="125,50 190,190 160,190 125,120" fill="#fff" opacity="0.3"/>
+      </svg>
+      {/* Red accent line */}
+      <div style={{ position: 'absolute', left: 0, top: 0, width: 4, height: '100%', background: 'linear-gradient(180deg, #DD0031 0%, transparent 100%)' }} />
+      {/* Content */}
+      <div style={{ position: 'relative', zIndex: 2, padding: '72px 80px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 56 }}>
+          <svg width="28" height="28" viewBox="0 0 250 250" fill="none">
+            <polygon points="125,5 250,45 220,200 125,245 30,200 0,45" fill="#DD0031"/>
+          </svg>
+          <span style={{ color: '#DD0031', fontSize: 13, letterSpacing: 3, fontWeight: 600, textTransform: 'uppercase' }}>Angular Expert</span>
+        </div>
+        <div style={{ color: '#ffffff', fontSize: 72, fontWeight: 800, lineHeight: 0.95, marginBottom: 24, letterSpacing: '-2px' }}>
+          BRIAN<br/><span style={{ color: '#DD0031' }}>KOO</span>
+        </div>
+        <div style={{ color: '#8892a4', fontSize: 18, fontWeight: 400, marginBottom: 48, maxWidth: 480, lineHeight: 1.6 }}>
+          Senior Frontend Engineer with 9 years crafting high-performance Angular applications for enterprise at scale.
+        </div>
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 48 }}>
+          {['Angular', 'TypeScript', 'RxJS', 'NgRx', 'Nx Monorepo'].map(t => (
+            <span key={t} style={{ border: '1px solid #DD003155', color: '#DD0031', padding: '4px 14px', fontSize: 12, letterSpacing: 1, fontWeight: 600 }}>{t}</span>
+          ))}
+        </div>
+        <div style={{ display: 'flex', gap: 16 }}>
+          <button style={{ background: '#DD0031', color: '#fff', border: 'none', padding: '14px 36px', fontSize: 14, fontWeight: 700, letterSpacing: 2, cursor: 'pointer', textTransform: 'uppercase' }}>View Work</button>
+          <button style={{ background: 'transparent', color: '#fff', border: '1px solid #333', padding: '14px 36px', fontSize: 14, letterSpacing: 2, cursor: 'pointer', textTransform: 'uppercase' }}>Contact</button>
+        </div>
+        {/* Stats row */}
+        <div style={{ display: 'flex', gap: 48, marginTop: 64, paddingTop: 32, borderTop: '1px solid #1a1a2e' }}>
+          {[['9+', 'Years'], ['3', 'Companies'], ['IEEE', 'Notable Client']].map(([n, l]) => (
+            <div key={l}>
+              <div style={{ color: '#DD0031', fontSize: 28, fontWeight: 800 }}>{n}</div>
+              <div style={{ color: '#555', fontSize: 12, letterSpacing: 2, textTransform: 'uppercase' }}>{l}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─── CONCEPT 3: Editorial Split ────────────────────────────────── */
+function Concept3() {
+  return (
+    <div style={{ width: '100%', height: '100%', background: '#f5f0eb', position: 'relative', overflow: 'hidden', fontFamily: "'Instrument Serif', serif", display: 'flex' }}>
+      {/* Left dark panel */}
+      <div style={{ width: '42%', background: '#111', position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '48px 40px' }}>
+        <div>
+          <div style={{ color: '#DD0031', fontSize: 11, letterSpacing: 3, fontFamily: "'Space Mono', monospace", marginBottom: 40, textTransform: 'uppercase' }}>Angular / TypeScript / RxJS</div>
+          <div style={{ color: '#fff', fontSize: 80, lineHeight: 0.9, fontWeight: 400, marginBottom: 16 }}>
+            Brian<br/><em style={{ color: '#DD0031' }}>Koo</em>
+          </div>
+        </div>
+        <div>
+          <div style={{ color: '#555', fontSize: 11, fontFamily: "'Space Mono', monospace", marginBottom: 12 }}>— AVAILABLE FOR HIRE</div>
+          <div style={{ color: '#888', fontSize: 13, fontFamily: "'Space Mono', monospace" }}>Irvine, CA</div>
+        </div>
+      </div>
+      {/* Right light panel */}
+      <div style={{ flex: 1, padding: '48px 48px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <div>
+          <div style={{ fontSize: 11, letterSpacing: 3, fontFamily: "'Space Mono', monospace", color: '#999', textTransform: 'uppercase', marginBottom: 40 }}>Senior Frontend Engineer</div>
+          <div style={{ fontSize: 48, lineHeight: 1.05, color: '#111', marginBottom: 32 }}>
+            Building scalable<br/>enterprise apps<br/>with Angular—<br/><em>since 2015.</em>
+          </div>
+          <div style={{ fontSize: 14, color: '#666', lineHeight: 1.8, fontFamily: "'Space Grotesk', sans-serif", maxWidth: 340 }}>
+            9 years of deep frontend expertise. Formerly at IEEE, Bricksimple, and Airborne Interactive. I build Angular architectures that teams actually want to maintain.
+          </div>
+        </div>
+        <div style={{ display: 'flex', gap: 12 }}>
+          <div style={{ background: '#111', color: '#fff', padding: '12px 28px', fontSize: 12, fontFamily: "'Space Mono', monospace", letterSpacing: 1, cursor: 'pointer' }}>PROJECTS →</div>
+          <div style={{ border: '1px solid #ccc', color: '#111', padding: '12px 28px', fontSize: 12, fontFamily: "'Space Mono', monospace", letterSpacing: 1, cursor: 'pointer' }}>RÉSUMÉ</div>
+        </div>
+      </div>
+      {/* Diagonal accent */}
+      <div style={{ position: 'absolute', left: '42%', top: 0, width: 2, height: '100%', background: '#DD0031', transform: 'translateX(-1px)' }} />
+    </div>
+  );
+}
+
+/* ─── CONCEPT 4: Grid / Blueprint ───────────────────────────────── */
+function Concept4() {
+  return (
+    <div style={{ width: '100%', height: '100%', background: '#060a14', position: 'relative', overflow: 'hidden', fontFamily: "'Geist Mono', monospace" }}>
+      {/* Blueprint grid */}
+      <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.15 }} preserveAspectRatio="none">
+        <defs>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#4466aa" strokeWidth="0.5"/>
+          </pattern>
+          <pattern id="grid2" width="200" height="200" patternUnits="userSpaceOnUse">
+            <rect width="200" height="200" fill="url(#grid)"/>
+            <path d="M 200 0 L 0 0 0 200" fill="none" stroke="#4466aa" strokeWidth="1.5"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid2)"/>
+      </svg>
+      {/* Corner markers */}
+      {[[16,16],[1424,16],[16,884],[1424,884]].map(([x,y],i) => (
+        <svg key={i} style={{ position: 'absolute', left: x-8, top: y-8, opacity: 0.5 }} width="16" height="16" viewBox="0 0 16 16">
+          <line x1="8" y1="0" x2="8" y2="16" stroke="#4466aa" strokeWidth="1"/>
+          <line x1="0" y1="8" x2="16" y2="8" stroke="#4466aa" strokeWidth="1"/>
+        </svg>
+      ))}
+      {/* Content */}
+      <div style={{ position: 'relative', zIndex: 2, padding: '60px 72px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40, height: '100%', alignItems: 'center' }}>
+        <div>
+          <div style={{ color: '#4466aa', fontSize: 11, letterSpacing: 2, marginBottom: 16 }}>
+            COMPONENT_ID: BK-001 // IRVINE.CA
+          </div>
+          <div style={{ fontSize: 11, color: '#4466aa', marginBottom: 32, letterSpacing: 1 }}>
+            ┌─ PROFILE ─────────────────────────┐
+          </div>
+          <div style={{ color: '#e8eeff', fontSize: 64, fontWeight: 700, lineHeight: 0.9, letterSpacing: '-1px', marginBottom: 24 }}>
+            BRIAN<br/>KOO
+          </div>
+          <div style={{ color: '#DD0031', fontSize: 14, letterSpacing: 3, marginBottom: 32, textTransform: 'uppercase' }}>
+            ■ Senior Frontend Engineer
+          </div>
+          <div style={{ color: '#8899bb', fontSize: 13, lineHeight: 1.8, marginBottom: 40 }}>
+            Architecting Angular applications at enterprise scale.<br/>9 years. IEEE, Bricksimple, Airborne Interactive.
+          </div>
+          <div style={{ display: 'flex', gap: 12 }}>
+            <div style={{ background: '#DD0031', color: '#fff', padding: '10px 24px', fontSize: 12, letterSpacing: 2 }}>EXECUTE →</div>
+            <div style={{ border: '1px solid #4466aa44', color: '#8899bb', padding: '10px 24px', fontSize: 12, letterSpacing: 1 }}>CONTACT</div>
+          </div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1, background: '#4466aa22' }}>
+          {[['Angular', 'v17+'], ['TypeScript', '5.x'], ['RxJS', 'Reactive'], ['NgRx', 'State Mgmt'], ['Nx', 'Monorepo'], ['Jest', 'Testing'], ['REST / GraphQL', 'APIs'], ['CI/CD', 'DevOps']].map(([k, v]) => (
+            <div key={k} style={{ background: '#060a14', padding: '20px 24px', borderBottom: '1px solid #4466aa22' }}>
+              <div style={{ color: '#DD0031', fontSize: 11, marginBottom: 4 }}>{v}</div>
+              <div style={{ color: '#e8eeff', fontSize: 13, fontWeight: 600 }}>{k}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─── CONCEPT 5: Minimal Dark / Typography ───────────────────────── */
+function Concept5() {
+  return (
+    <div style={{ width: '100%', height: '100%', background: '#0c0c0c', position: 'relative', overflow: 'hidden', fontFamily: "'Space Grotesk', sans-serif" }}>
+      {/* Subtle noise texture via SVG */}
+      <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.04 }}>
+        <filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter>
+        <rect width="100%" height="100%" filter="url(#noise)"/>
+      </svg>
+      {/* Thin top bar */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: 'linear-gradient(90deg, transparent, #DD0031, transparent)' }} />
+      {/* Navigation */}
+      <div style={{ padding: '28px 64px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative', zIndex: 2 }}>
+        <div style={{ color: '#DD0031', fontSize: 13, fontWeight: 700, letterSpacing: 2 }}>BK</div>
+        <div style={{ display: 'flex', gap: 40, color: '#555', fontSize: 12, letterSpacing: 2 }}>
+          {['WORK', 'ABOUT', 'SKILLS', 'CONTACT'].map(l => <span key={l} style={{ cursor: 'pointer' }}>{l}</span>)}
+        </div>
+      </div>
+      {/* Hero */}
+      <div style={{ padding: '60px 64px', position: 'relative', zIndex: 2 }}>
+        <div style={{ fontSize: 120, fontWeight: 700, color: '#fff', lineHeight: 0.88, letterSpacing: '-4px', marginBottom: 32 }}>
+          <span style={{ display: 'block', color: '#1a1a1a', WebkitTextStroke: '1px #333' }}>SENIOR</span>
+          <span style={{ display: 'block' }}>FRONTEND</span>
+          <span style={{ display: 'block', color: '#DD0031' }}>ENGINEER</span>
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', paddingTop: 32, borderTop: '1px solid #1f1f1f', marginTop: 40 }}>
+          <div>
+            <div style={{ color: '#fff', fontSize: 24, fontWeight: 500, marginBottom: 4 }}>Brian Koo</div>
+            <div style={{ color: '#555', fontSize: 13, letterSpacing: 1 }}>Angular · TypeScript · RxJS · NgRx · Irvine CA</div>
+          </div>
+          <div style={{ display: 'flex', gap: 12 }}>
+            <div style={{ background: '#DD0031', color: '#fff', padding: '12px 32px', fontSize: 13, letterSpacing: 1, fontWeight: 600, cursor: 'pointer' }}>View Projects</div>
+            <div style={{ color: '#444', fontSize: 13, letterSpacing: 1, padding: '12px 0', cursor: 'pointer' }}>Get in touch →</div>
+          </div>
+        </div>
+      </div>
+      {/* Horizontal marquee */}
+      <div style={{ position: 'absolute', bottom: 48, left: 0, right: 0, overflow: 'hidden', borderTop: '1px solid #1f1f1f', borderBottom: '1px solid #1f1f1f', padding: '12px 0' }}>
+        <div style={{ display: 'flex', gap: 64, color: '#2a2a2a', fontSize: 13, letterSpacing: 3, whiteSpace: 'nowrap', animation: 'marquee 20s linear infinite' }}>
+          {Array(3).fill(['ANGULAR', 'TYPESCRIPT', 'RXJS', 'NGRX', 'IEEE', 'BRICKSIMPLE', 'AIRBORNE INTERACTIVE', 'IRVINE CA', '9 YEARS EXP']).flat().map((t, i) => <span key={i}>{t} ·</span>)}
+        </div>
+      </div>
+      <style>{`@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-33.33%)} }`}</style>
+    </div>
+  );
+}
+
+/* ─── CONCEPT 6: Glassmorphism Dark ─────────────────────────────── */
+function Concept6() {
+  return (
+    <div style={{ width: '100%', height: '100%', background: '#05060e', position: 'relative', overflow: 'hidden', fontFamily: "'Space Grotesk', sans-serif" }}>
+      {/* Glow blobs */}
+      <div style={{ position: 'absolute', width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(circle, #DD003130, transparent 70%)', top: -100, right: -100, pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, #3344ff20, transparent 70%)', bottom: 0, left: 200, pointerEvents: 'none' }} />
+      {/* Nav */}
+      <div style={{ padding: '28px 56px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative', zIndex: 10, backdropFilter: 'blur(10px)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <svg width="22" height="22" viewBox="0 0 250 250">
+            <polygon points="125,5 250,45 220,200 125,245 30,200 0,45" fill="#DD0031"/>
+          </svg>
+          <span style={{ color: '#fff', fontWeight: 700, fontSize: 14, letterSpacing: 1 }}>Brian Koo</span>
+        </div>
+        <div style={{ display: 'flex', gap: 32, color: 'rgba(255,255,255,0.4)', fontSize: 13 }}>
+          {['Work', 'About', 'Skills', 'Contact'].map(l => <span key={l} style={{ cursor: 'pointer' }}>{l}</span>)}
+        </div>
+        <div style={{ background: '#DD0031', color: '#fff', padding: '8px 20px', fontSize: 12, fontWeight: 600, cursor: 'pointer', borderRadius: 2 }}>Hire Me</div>
+      </div>
+      {/* Content */}
+      <div style={{ padding: '56px 56px', position: 'relative', zIndex: 2, display: 'grid', gridTemplateColumns: '1fr auto', gap: 40, alignItems: 'start' }}>
+        <div>
+          <div style={{ color: 'rgba(255,255,255,0.3)', fontSize: 12, letterSpacing: 3, marginBottom: 24, textTransform: 'uppercase' }}>Available for full-time · Irvine, CA</div>
+          <div style={{ color: '#fff', fontSize: 68, fontWeight: 700, lineHeight: 0.92, letterSpacing: '-2px', marginBottom: 28 }}>
+            Building the<br/>future of the<br/>web with <span style={{ color: '#DD0031' }}>Angular.</span>
+          </div>
+          <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: 16, lineHeight: 1.7, maxWidth: 520, marginBottom: 40 }}>
+            Senior Frontend Engineer with 9 years of experience. Deep expertise in Angular, TypeScript and reactive architectures. Formerly IEEE, Bricksimple, Airborne Interactive.
+          </div>
+          <div style={{ display: 'flex', gap: 12 }}>
+            <button style={{ background: '#DD0031', color: '#fff', border: 'none', padding: '14px 36px', fontSize: 14, fontWeight: 600, cursor: 'pointer', borderRadius: 2 }}>View Projects</button>
+            <button style={{ background: 'rgba(255,255,255,0.06)', backdropFilter: 'blur(10px)', color: '#fff', border: '1px solid rgba(255,255,255,0.1)', padding: '14px 36px', fontSize: 14, cursor: 'pointer', borderRadius: 2 }}>Download CV</button>
+          </div>
+        </div>
+        {/* Glass card */}
+        <div style={{ background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '32px 28px', width: 260 }}>
+          <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 11, letterSpacing: 2, marginBottom: 24, textTransform: 'uppercase' }}>Stack</div>
+          {[['Angular 17+', '████████████', '#DD0031'], ['TypeScript', '███████████░', '#7c8cff'], ['RxJS', '██████████░░', '#4ec9b0'], ['NgRx', '█████████░░░', '#f0a500'], ['Jest / Cypress', '████████░░░░', '#7ccc7c']].map(([name, bar, color]) => (
+            <div key={name} style={{ marginBottom: 16 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
+                <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: 12 }}>{name}</span>
+              </div>
+              <div style={{ fontFamily: 'monospace', color, fontSize: 11, letterSpacing: 1 }}>{bar}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─── CANVAS ─────────────────────────────────────────────────────── */
+function App() {
+  const W = 1440, H = 860;
+  return (
+    <DesignCanvas title="Brian Koo — Website Concepts">
+      <DCSection id="concepts" title="Hero Direction Options">
+        <DCArtboard id="c1" label="01 · Terminal / Code Editor" width={W} height={H}><Concept1/></DCArtboard>
+        <DCArtboard id="c2" label="02 · Angular Shield / Bold" width={W} height={H}><Concept2/></DCArtboard>
+        <DCArtboard id="c3" label="03 · Editorial Split (Light+Dark)" width={W} height={H}><Concept3/></DCArtboard>
+        <DCArtboard id="c4" label="04 · Blueprint / Grid System" width={W} height={H}><Concept4/></DCArtboard>
+        <DCArtboard id="c5" label="05 · Typographic Impact" width={W} height={H}><Concept5/></DCArtboard>
+        <DCArtboard id="c6" label="06 · Glassmorphism Dark" width={W} height={H}><Concept6/></DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

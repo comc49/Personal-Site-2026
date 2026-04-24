@@ -1,0 +1,45 @@
+<section id="about" style="padding: 80px 0; border-top: 1px solid var(--border);">
+  <div class="sec-pad" style="max-width: 1100px;">
+
+    <div class="dim" style="font-size: 11px; letter-spacing: 2px; margin-bottom: 32px; text-transform: uppercase;">about.ts</div>
+
+    <div style="font-size: 13px; line-height: 22px; margin-bottom: 24px;">
+      <span class="cmt">/**</span><br>
+      <span class="cmt">&nbsp;* &#64;class BrianKoo</span><br>
+      <span class="cmt">&nbsp;* &#64;extends SeniorFrontendDeveloper</span><br>
+      <span class="cmt">&nbsp;* &#64;since 2015 &nbsp; &#64;education UC Riverside, B.S. Computer Science</span><br>
+      <span class="cmt">&nbsp;*/</span>
+    </div>
+
+    <div class="grid-2col" style="font-size: 13px;">
+      <div>
+        <div style="margin-bottom: 12px;">
+          <span class="keyword">export class</span>
+          <span> </span>
+          <span class="type">BrianKoo</span>
+          <span> &#123;</span>
+        </div>
+        <div style="padding-left: 24px; color: var(--text); font-family: var(--sans); font-size: 14px; line-height: 1.85; padding-right: 16px;">
+          <p style="margin-bottom: 14px;">Senior Frontend Developer with 8+ years of experience architecting and delivering enterprise-scale Angular applications in fully remote, distributed environments.</p>
+          <p style="margin-bottom: 14px;">Expert in Angular (v11–21), TypeScript, RxJS, and NGXS, with a proven track record of leading full-scale framework migrations, building accessible WCAG 2.1 AA-compliant interfaces, and driving measurable performance improvements.</p>
+          <p>Adept at collaborating cross-functionally with UX, QA, and product teams to deliver polished, scalable frontend solutions. Passionate about clean component architecture, mentoring engineers, and continuously adopting modern frontend best practices.</p>
+        </div>
+        <div style="margin-top: 16px;">&#125;</div>
+      </div>
+
+      <div>
+        <div class="cmt" style="margin-bottom: 16px;">// Quick facts</div>
+        @for (fact of facts; track fact.key) {
+          <div style="margin-bottom: 8px;">
+            <span class="keyword">const </span>
+            <span class="prop">{{ fact.key }}</span>
+            <span> = </span>
+            <span [class]="fact.isStr ? 'str' : 'keyword'">{{ fact.value }}</span>
+            <span>;</span>
+          </div>
+        }
+      </div>
+    </div>
+
+  </div>
+</section>

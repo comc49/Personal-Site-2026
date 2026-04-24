@@ -1,0 +1,47 @@
+<section id="skills" style="padding: 80px 0; border-top: 1px solid var(--border); background: var(--bg2);">
+  <div class="sec-pad">
+
+    <div class="dim" style="font-size: 11px; letter-spacing: 2px; margin-bottom: 32px; text-transform: uppercase;">skills.config.ts</div>
+
+    <div style="font-size: 13px; margin-bottom: 12px;">
+      <span class="keyword">export const</span>
+      <span> </span>
+      <span class="prop">skillMatrix</span>
+      <span class="keyword">: </span>
+      <span class="type">SkillConfig</span>
+      <span> = &#123;</span>
+    </div>
+
+    <div class="grid-4col">
+      @for (col of columns; track col.label) {
+        <div style="background: var(--bg); padding: 24px 20px;">
+          <div style="margin-bottom: 16px;">
+            <span class="prop">{{ col.label }}</span><span>: [</span>
+          </div>
+          @for (item of col.items; track item.name) {
+            <div style="padding-left: 16px; margin-bottom: 12px;">
+              <div class="str" style="font-size: 12px;">"{{ item.name }}"</div>
+              <div class="cmt" style="font-size: 11px;">// {{ item.desc }}</div>
+            </div>
+          }
+          <div>],</div>
+        </div>
+      }
+    </div>
+
+    <div style="font-size: 13px; margin-bottom: 24px;">
+      <div style="padding-left: 28px;">
+        <span class="prop">accessibility</span><span>: </span><span class="str">"WCAG 2.1 AA"</span><span>,</span>
+      </div>
+      <div style="padding-left: 28px;">
+        <span class="prop">analytics</span><span>: </span><span class="str">"Google Analytics / AdSense"</span><span>,</span>
+      </div>
+      <div style="padding-left: 28px;">
+        <span class="prop">emailTemplating</span><span>: </span><span class="str">"MJML"</span><span>,</span>
+      </div>
+    </div>
+
+    <div style="font-size: 13px;">&#125;<span class="dim">;</span></div>
+
+  </div>
+</section>

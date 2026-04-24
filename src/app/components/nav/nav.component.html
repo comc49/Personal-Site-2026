@@ -1,0 +1,25 @@
+<nav>
+  <div class="nav-logo">
+    <svg width="16" height="16" viewBox="0 0 250 250" aria-hidden="true">
+      <polygon points="125,5 250,45 220,200 125,245 30,200 0,45" fill="#DD0031"/>
+    </svg>
+    <span class="logo-text">bkoo</span>
+  </div>
+
+  <div class="tab-strip">
+    @for (tab of tabs; track tab.id) {
+      <button
+        class="tab"
+        [class.active]="activeSection === tab.id"
+        (click)="scrollTo(tab.id)"
+        [attr.aria-current]="activeSection === tab.id ? 'page' : null">
+        {{ tab.label }}
+      </button>
+    }
+  </div>
+
+  <div class="status-zone">
+    <span class="ts-label">TypeScript</span>
+    <span class="open-badge">OPEN TO WORK</span>
+  </div>
+</nav>

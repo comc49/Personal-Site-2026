@@ -1,0 +1,55 @@
+<section id="experience" style="padding: 80px 0; border-top: 1px solid var(--border);">
+  <div class="sec-pad">
+
+    <div class="dim" style="font-size: 11px; letter-spacing: 2px; margin-bottom: 32px; text-transform: uppercase;">experience.service.ts</div>
+
+    <div style="font-size: 13px; margin-bottom: 24px;">
+      <span class="keyword">export class</span>
+      <span> </span>
+      <span class="type">ExperienceService</span>
+      <span> &#123;</span>
+    </div>
+
+    <div class="exp-inner">
+      @for (job of jobs; track job.company) {
+        <div style="margin-bottom: 52px; padding-left: 24px; position: relative;"
+             [style.border-left]="'2px solid ' + job.color + '55'">
+          <div style="position: absolute; left: -5px; top: 4px; width: 8px; height: 8px; border-radius: 50%;"
+               [style.background]="job.color"></div>
+
+          <div style="display: flex; align-items: baseline; gap: 16px; margin-bottom: 4px; flex-wrap: wrap;">
+            <span class="fn" style="font-size: 15px;">{{ job.company }}</span>
+            <span class="cmt" style="font-size: 12px;">// {{ job.period }}</span>
+          </div>
+
+          <div style="color: var(--dim); font-size: 11px; margin-bottom: 10px; letter-spacing: 0.5px;">{{ job.location }}</div>
+
+          <div style="margin-bottom: 16px; font-size: 13px;">
+            <span class="keyword">&#64;</span><span class="type">Role</span><span>(</span><span class="str">'{{ job.role }}'</span><span>)</span>
+          </div>
+
+          @for (point of job.points; track $index) {
+            <div style="display: flex; gap: 12px; margin-bottom: 10px; font-size: 13px;">
+              <span class="cmt" style="flex-shrink: 0; margin-top: 3px;">▸</span>
+              <span style="color: var(--text); font-family: var(--sans); font-size: 14px; line-height: 1.65;">{{ point }}</span>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <div style="padding-left: 28px; margin-bottom: 48px;">
+      <div class="cmt" style="font-size: 12px; margin-bottom: 16px;">// Education</div>
+      <div style="font-size: 13px;"><span class="prop">education</span><span>: &#123;</span></div>
+      <div style="padding-left: 28px; font-size: 13px; line-height: 26px;">
+        <div><span class="prop">degree</span><span>: </span><span class="str">"B.S. Computer Science"</span><span>,</span></div>
+        <div><span class="prop">school</span><span>: </span><span class="str">"University of California, Riverside"</span><span>,</span></div>
+        <div><span class="prop">years</span><span>: </span><span class="num">2010</span><span>–</span><span class="num">2014</span></div>
+      </div>
+      <div style="font-size: 13px;">&#125;<span class="dim">,</span></div>
+    </div>
+
+    <div style="font-size: 13px;">&#125;</div>
+
+  </div>
+</section>
