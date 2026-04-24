@@ -8,7 +8,6 @@ import { Component } from '@angular/core';
 export class AboutComponent {
   readonly facts = [
     { key: 'email',     value: '"briankoo.web@gmail.com"', isStr: true  },
-    { key: 'phone',     value: '"(818) 359-2010"',         isStr: true  },
     { key: 'linkedin',  value: '"linkedin.com/in/koobrian"',isStr: true  },
     { key: 'location',  value: '"Irvine, CA"',             isStr: true  },
     { key: 'education', value: '"B.S. CS — UC Riverside"', isStr: true  },
