@@ -113,7 +113,6 @@ const engineer: SeniorDeveloper = {                  ← 13px
 **Right column — const declarations:**
 ```ts
 const email    = "briankoo.web@gmail.com";
-const phone    = "(818) 359-2010";
 const linkedin = "linkedin.com/in/koobrian";
 const location = "Irvine, CA";
 const education = "B.S. CS — UC Riverside";
@@ -233,7 +232,6 @@ Each card: `background: #0d0d0d`, `padding: 28px`. Type decorator in purple/blue
 **Left:** `// Let's build something great together` comment + two const declarations:
 ```ts
 const email = "briankoo.web@gmail.com";  // clickable mailto link
-const phone = "(818) 359-2010";
 ```
 
 **Center links:** LinkedIn (`https://linkedin.com/in/koobrian`), GitHub, Resume.pdf ↓ (red color)
